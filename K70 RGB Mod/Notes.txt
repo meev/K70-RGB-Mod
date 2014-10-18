@@ -1,0 +1,290 @@
+
+// American layout keyboard
+// 0: Escape				// 12: F1						// 24: F2						// 36: F3							// 48: F4						// 60: F5
+// 1: Back tick				// 13: 1						// 25: 2						// 37: 3							// 49: 4						// 61: 5
+// 2: Tab					// 14: Q						// 26: W						// 38: E							// 50: R						// 62: T
+// 3: Caps lock				// 15: A						// 27: S						// 39: D							// 51: F						// 63: G
+// 4: Left shift			// 16: \ < >					// 28: Z						// 40: X							// 52: C						// 64: V
+// 5: Left control			// 17: Left Windows				// 29: Left Alt					// 41: N  /  A						// 53: Space					// 65: N  /  A
+// 6: F12					// 18: PrtSc					// 30: ScrLk					// 42: Pause						// 54: Ins						// 66: Home
+// 7: Equals				// 19: N/A						// 31: Backspace				// 43: Del							// 55: End						// 67: PgDn
+// 8: Window key lock		// 20: Media control: mute		// 32: Media control: stop		// 44: Media control: previous		// 56: Media control: play		// 68: Media control: next
+// 9: Number pad 7			// 21: Number pad 8				// 33: Number pad 9				// 45: N  /  A						// 57: Number pad 4				// 69: Number pad 5
+// 10: N  /  A				// 22: N  /  A					// 34: N  /  A					// 46: N  /  A						// 58: N  /  A					// 70: N  /  A
+// 11: N  /  A				// 23: N  /  A					// 35: N  /  A					// 47: N  /  A						// 59: N  /  A					// 71: N  /  A
+
+// 72: F6					// 84: F7						// 96: F8						// 108: F9							// 120: F10						// 132: F11
+// 73: 6					// 85: 7						// 97: 8						// 109: 9							// 121: 0						// 133: -
+// 74: Y					// 86: U						// 98: I						// 110: O							// 122: P						// 134: [
+// 75: H					// 87: J						// 99: K						// 111: L							// 123: ;						// 135: '
+// 76: B					// 88: N						// 100: M						// 112: <							// 124: N  /  A					// 136: /
+// 77: N  /  A				// 89: Right alt				// 101: Right Windows			// 113: Menu						// 125: N  /  A					// 137: Light brightness
+// 78: PgUp					// 90: ]						// 102: \						// 114: * '							// 126: Enter					// 138: N  /  A
+// 79: Right shift			// 91: Right control			// 103: Up arrow				// 115: Left arrow					// 127: Down arrow				// 139: Right arrow
+// 80: Num lock				// 92: Number pad /				// 104: Number pad *			// 116: Number pad -				// 128: Number pad +			// 140: Number pad enter
+// 81: Number pad 6			// 93: Number pad 1				// 105: Number pad 2			// 117: Number pad 3				// 129: Number pad 0			// 141: Number pad .
+// 82: N  /  A				// 94: N  /  A					// 106: N  /  A					// 118: N  /  A						// 130: N  /  A					// 142: N  /  A
+// 83: N  /  A				// 95: N  /  A					// 107: N  /  A					// 119: N  /  A						// 131: N  /  A					// 143: N  /  A
+
+void PrintNumber(int number, int r, int g, int b)
+{
+	if (number == 1)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(80, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(57, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, MAXCOL, MAXCOL, MAXCOL);
+	}
+	else if (number == 2)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, r, g, b);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+	else if(number == 3)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+	else if(number == 4)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, MAXCOL, MAXCOL, MAXCOL);
+	}
+	else if(number == 5)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+	else if(number == 6)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, r, g, b);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+	else if (number == 7)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(57, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, MAXCOL, MAXCOL, MAXCOL);
+	}
+	else if (number == 8)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, r, g, b);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+	else if (number == 9)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, r, g, b);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, MAXCOL, MAXCOL, MAXCOL);
+	}
+	else if (number == 0)
+	{
+		SetLedRGB(116, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(128, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(140, MAXCOL, MAXCOL, MAXCOL);
+
+		SetLedRGB(104, r, g, b);
+		SetLedRGB(92, r, g, b);
+		SetLedRGB(80, r, g, b);
+
+		SetLedRGB(33, r, g, b);
+		SetLedRGB(21, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(9, r, g, b);
+
+		SetLedRGB(81, r, g, b);
+		SetLedRGB(69, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(57, r, g, b);
+
+		SetLedRGB(117, r, g, b);
+		SetLedRGB(105, MAXCOL, MAXCOL, MAXCOL);
+		SetLedRGB(93, r, g, b);
+
+		SetLedRGB(141, r, g, b);
+		SetLedRGB(129, r, g, b);
+	}
+}
+/*unsigned char		g_XYvk[] = {
+0x0, 0x0, 0xAD, 255,
+0x1B, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x7B, 0x2C, 0x91, 0x13, 0xB2, 0xB1, 0xB3, 0xB0, 255,
+0xDC, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30, 0xBB, 0xDB, 0x8, 0x2D, 0x24, 0x21, 0x90, 0x6F, 0x6A, 0x6D, 255,
+0x9, 0x51, 0x57, 0x45, 0x52, 0x54, 0x59, 0x55, 0x49, 0x4F, 0x50, 0xDD, 0xBA, 0xD, 0x2E, 0x23, 0x22, 0x67, 0x68, 0x69, 0x6B, 255,
+0x14, 0x41, 0x53, 0x44, 0x46, 0x47, 0x48, 0x4A, 0x4B, 0x4C, 0xC0, 0xDE, 0xBF, 0xD, 0x64, 0x65, 0x66, 0x6B, 255,
+0xA0, 0xE2, 0x5A, 0x58, 0x43, 0x56, 0x42, /0x4E, 0x4D, 0xBC, 0xBE, 0xBD, 0xA1, 0x26, 0x61, 0x62, 0x63, 0xD, 255,
+0xA2, 0x5B, 0xA4, 0x20, 0xA5, 0x5C, 0x5D, 0xA3, 0x25, 0x28, 0x27, 0x60, 0x6E, 0xD, 255,
+};*/

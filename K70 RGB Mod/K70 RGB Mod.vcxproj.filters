@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="K70 RGB Mod.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LightControl.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LightControl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{2bccea06-045d-4c7b-a2e2-6f022c5bdbba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{8f846e6e-84b8-4130-9f31-b496d3c2748c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
