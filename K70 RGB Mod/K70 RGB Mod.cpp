@@ -30,7 +30,7 @@ unsigned char		g_XYa[] = {
 unsigned char		g_vkToled[] = {
 	0, 
 	0, 0, 0, 0, 0, 0, 0, 31, 2, 0,	
-	0, 0, 126, 0, 0, 0, 0, 0, 42, 3,	//20 // ENTER IN RIGHT CORNER = 140
+	0, 0, 126, 140, 0, 0, 0, 0, 42, 3,	//20 // ENTER IN RIGHT CORNER = 140
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,	
 	0, 53, 78, 67, 55, 66, 115, 103, 139, 127,	//40
 	0, 0, 0, 18, 54, 43, 0, 121, 13, 25,	
@@ -60,8 +60,8 @@ unsigned char		g_XYv[] = {
 	0xDC, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30, 0xBB, 0xDB, 0x8, 0x2D, 0x24, 0x21, 0x90, 0x6F, 0x6A, 0x6D, 255,
 	0x9, 0x51, 0x57, 0x45, 0x52, 0x54, 0x59, 0x55, 0x49, 0x4F, 0x50, 0xDD, 0xBA, 0xD, 0x2E, 0x23, 0x22, 0x67, 0x68, 0x69, 0x6B, 255,
 	0x14, 0x41, 0x53, 0x44, 0x46, 0x47, 0x48, 0x4A, 0x4B, 0x4C, 0xC0, 0xDE, 0xBF, 0xD, 0x64, 0x65, 0x66, 0x6B, 255,
-	0xA0, 0xE2, 0x5A, 0x58, 0x43, 0x56, 0x42, 0x4E, 0x4D, 0xBC, 0xBE, 0xBD, 0xA1, 0x26, 0x61, 0x62, 0x63, 0xD, 255,
-	0xA2, 0x5B, 0xA4, 0x20, 0xA5, 0x5C, 0x5D, 0xA3, 0x25, 0x28, 0x27, 0x60, 0x6E, 0xD, 255,
+	0xA0, 0xE2, 0x5A, 0x58, 0x43, 0x56, 0x42, 0x4E, 0x4D, 0xBC, 0xBE, 0xBD, 0xA1, 0x26, 0x61, 0x62, 0x63, 0xE, 255,
+	0xA2, 0x5B, 0xA4, 0x20, 0xA5, 0x5C, 0x5D, 0xA3, 0x25, 0x28, 0x27, 0x60, 0x6E, 0xE, 255,
 };
 // Key lenghts
 float				g_XYb[] = {
@@ -242,10 +242,26 @@ int SetXYRGB(int x, int y, int r, int g, int b)
 	return pLC->SetXYRGB(x, y, r, g, b);
 }
 
+int clamp(int x, int y, int z)
+{
+	if (x < y)
+		x = y;
+	else if (x > z)
+		x = z;
+	return x;
+}
+struct Circles
+{
+	int x;
+	int y;
+	float r = 0;
+	float e = 1.5;
+};
+
 //Rainbow with reactive typing
 void RainbowRT()
 {
-	g_iInterval = 50;
+	g_iInterval = 30;
 	const int TotalTicks = 200;
 	static int r = 7, g = 0, b = 0, Tick = 0, Ticker = 0;
 	static int aRGB[TotalTicks][3];
@@ -298,11 +314,11 @@ void RainbowRT()
 			else
 			{
 				bKeyPressed[x][y] = false;
-				SetXYRGB(x, y, aRGB[realTick][0], aRGB[realTick][1], aRGB[realTick][2]);
+				SetXYRGB(x, y, aRGB[realTick][0]-4, aRGB[realTick][1]-4, aRGB[realTick][2]-4);
 			}
 		}
 	}
-	
+
 	//Reactive Typing
 	for (int x = 0; x < 91; x++)
 	{
@@ -312,31 +328,52 @@ void RainbowRT()
 			{
 				static int Pressed;
 
-				if (ikeyTicker[x][y] < MAXCOL)
+				if (ikeyTicker[x][y] < 91)
 					ikeyTicker[x][y] += 4;
-				for (int x2 = 0; x2 < 91; x2++)
+				for (int x2 = 0; x2 < ikeyTicker[x][y]; x2++)
 				{
 					int realTick = Tick - x2;
 
 					if (realTick < 0)
 						realTick += TotalTicks;
 
-					SetXYRGB(x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
+					SetXYRGB(x + x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
+				}
+				for (int x2 = 0; x2 < ikeyTicker[x][y]; x2++)
+				{
+					int realTick = Tick - x2;
+
+					if (realTick < 0)
+						realTick += TotalTicks;
+
+					SetXYRGB(x - x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
 				}
 			}
 			else
 			{
 				if (ikeyTicker[x][y] > 0)
 				{
-					ikeyTicker[x][y]--;
-					for (int x2 = 0; x2 < 91; x2++)
+					if (ikeyTicker[x][y] > 91)
+						ikeyTicker[x][y] = 91;
+					else
+						ikeyTicker[x][y]-= 5;
+					for (int x2 = 0; x2 < ikeyTicker[x][y]; x2++)
+					{
+						int realTick = Tick - x2;
+						
+						if (realTick < 0)
+							realTick += TotalTicks;
+
+						SetXYRGB(x + x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
+					}
+					for (int x2 = 0; x2 < ikeyTicker[x][y]; x2++)
 					{
 						int realTick = Tick - x2;
 
 						if (realTick < 0)
 							realTick += TotalTicks;
 
-						SetXYRGB(x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
+						SetXYRGB(x - x2, y, ikeyTicker[x][y] + aRGB[realTick][0], ikeyTicker[x][y] + aRGB[realTick][1], ikeyTicker[x][y] + aRGB[realTick][2]);
 					}
 				}
 				else
@@ -353,16 +390,29 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 	if (nCode == HC_ACTION)
 	{
 		KBDLLHOOKSTRUCT* p = (KBDLLHOOKSTRUCT*)lParam;
+
+		// For reactive typing Enter & Alt keys fix
+		if ((p->vkCode == 0xA4 || p->vkCode == 0xA5) && (p->flags == 0x20 || p->flags == 0x21))
+			g_KP[p->vkCode] = true;
+		if ((p->vkCode == 0xA4 || p->vkCode == 0xA5) && (p->flags == 0x80 || p->flags == 0x81))
+			g_KP[p->vkCode] = false;
+
 		switch (wParam)
 		{
-			case WM_KEYDOWN:
+		case WM_KEYDOWN:
+			if (p->vkCode == 0xD && p->flags == 0x1)
+				g_KP[p->vkCode + 1] = true;
+			else
 				g_KP[p->vkCode] = true;
-				break;
-			case WM_KEYUP:
+			break;
+		case WM_KEYUP:
+			if (p->vkCode == 0xD && p->flags == 0x81)
+				g_KP[p->vkCode+1] = false;
+			else
 				g_KP[p->vkCode] = false;
-				break;
-			default:
-				break;
+			break;
+		default:
+			break;
 		}
 	}
 	return CallNextHookEx(hHook, nCode, wParam, lParam);
